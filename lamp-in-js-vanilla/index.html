@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magic Lamp</title>
+</head>
+<body>
+
+    <style>
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+}
+
+button {
+  width: 80px;
+  background-color: yellowgreen;
+  border-radius: 20px;
+}
+
+h1 {
+  color: black;
+  font-size: xx-large;
+  align-items: center;
+  margin-top: 4px;
+}
+
+#cabecalho {
+  background-color: yellowgreen;
+  position: center;
+  left:20px;
+  right:20px;
+  height:20px;
+}
+
+section {
+  position:fixed;
+  left: 0%;
+  right: 0%;
+  top: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 90px;
+}
+    </style>
+
+<section>
+<header id="cabecalho">
+  <h1>Lamp in JS Vanilla</h1>
+</header>
+</section>
+  <main>
+  <div>
+    <img src="lamp-acesa.jpeg" alt="Lampada" id="lamp">
+  </div>
+  <div>
+    <button id='on' >Turn On</button>
+    <button id='off'>Turn Off</button>
+  </div>
+  </main>
+
+  <script>
+const buttonOn = document.getElementById('on');
+const buttonOff = document.getElementById('off');
+const lamp = document.getElementById('lamp');
+
+function LightOn () {
+  lamp.src = 'lamp-acesa.jpeg';
+}
+
+function lightOff () {
+  lamp.src = 'lamp-apagada.jpeg';
+}
+
+
+buttonOn.addEventListener('click', LightOn);
+buttonOff.addEventListener('click', lightOff);
+lamp.addEventListener('mouseover', LightOn);
+lamp.addEventListener('mouseleave', lightOff);
+  </script>
+  
+</body>
+</html>

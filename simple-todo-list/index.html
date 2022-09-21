@@ -1,0 +1,222 @@
+<html lang="pt-br">
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+  <title>To Do List - Ana Alice</title>
+  </head>
+  <body>
+
+    <style>
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.titulo {
+  margin: 220px auto;
+  padding: 30px;
+  width: 500px;
+  height: 300px;
+  background-color: yellowgreen;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.titulo header {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.titulo .task {
+  display: flex;
+  height: 30px;
+  width: 80%;
+  margin: 20px;
+  margin-left: 50px;
+}
+
+.task input {
+  width: 100%;
+  height: 35px;
+  border: 1px solid black;
+  font-size: 15px;
+  border-radius: 2px;
+}
+
+.task button {
+  border: 1px solid black;
+  color: white;
+  background: blueviolet;
+  width: 200px;
+  height: 35px;
+  font-size: 15px;
+  padding: 5px;
+  text-align: center;
+  border-radius: 2px;
+}
+
+#remover-finalizados, 
+#remover-selecionado,
+#salvar-tarefas {
+  color: white;
+  background: blueviolet;
+  border-radius: 8px;
+  margin-left: 40px;
+}
+
+.footer {
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.footer button {
+  border: 1px solid black;
+  color: white;
+  background: blueviolet;
+  width: 300px;
+  height: 120%;
+  border-radius: 8px;
+  margin: auto;
+  font-size: 15px;
+  padding: 5px;
+}
+
+button:hover {
+  background-color: gray;
+}
+
+.completed {
+  text-decoration: line-through solid rgb(0 , 0 , 0);
+}
+
+.selected {
+  background-color: rgb(128 , 128 , 128);
+}
+    </style>
+
+  <div  class = "titulo">
+  <header>
+    <h1>Minha Lista de Tarefas</h1>
+  </header>
+  
+  <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+  
+  <div class = "task">
+      <input type="text"  id="texto-tarefa">
+      <button type="button"  id="criar-tarefa" onclick = "adicionar()">Criar tarefa</button>
+  </div>
+  
+   <ol id="lista-tarefas"></ol>
+
+        <button  type="button" id="remover-finalizados" onclick="removeFinalizados()" >Remover tarefa</button>
+        <button  type="button"  id="remover-selecionado">Remover Selecionado</button>
+        <button id="salvar-tarefas">Salvar Tarefa</button>
+
+  <div class = "footer">
+    <button  type="button"id="apaga-tudo">Apaga Tudo</button>
+  </div>
+  </div>
+
+    <script>
+const createTask = document.querySelector('#criar-tarefa');
+const clearAll = document.querySelector('#apaga-tudo');
+const removeAllFinal = document.querySelector('#remover-finalizados');
+const saveTasks = document.querySelector('#salvar-tarefas');
+// const moveUp = document.querySelector('#mover-cima');
+// const moveDown = document.querySelector('#mover-baixo');
+const newTask = document.querySelector('#lista-tarefas');
+const inputTask = document.querySelector('#texto-tarefa');
+const listaOrdenada = document.querySelector('ol'); 
+const list = document.getElementsByTagName('li');
+
+function alertButton() {
+  document.querySelector('#criar-tarefa').onclick = function () {
+    if (document.querySelector('.task input').value.length === 0) {
+      alert('Adicione uma tarefa!');
+    }
+  };  
+}
+alertButton();
+
+function createNewTask() {
+  if (inputTask.value === '') {
+    return null;
+  }
+
+  const createLisTask = document.createElement('li');
+  createLisTask.innerHTML = inputTask.value;
+  createLisTask.classList.add('tarefa');
+  newTask.appendChild(createLisTask);
+  inputTask.value = '';
+}
+
+createTask.addEventListener('click', createNewTask);
+
+function backgroundGray() {
+  listaOrdenada.addEventListener('click', (event) => {
+    for (let i = 0; i < list.length; i += 1) {
+      const listGray = list[i];
+      listGray.style.backgroundColor = '';
+    }
+    event.target.style.backgroundColor = 'rgb(128,128,128)';
+  });
+}
+backgroundGray();
+
+function completed(event) {
+  const riscaTask = event.target;
+  if (riscaTask.classList.contains('completed')) {
+    riscaTask.classList.remove('completed');
+  } else {
+    riscaTask.classList.add('completed');
+  }
+}
+newTask.addEventListener('dblclick', completed);
+
+function clearTask() {
+  newTask.innerHTML = '';
+}
+clearAll.addEventListener('click', clearTask);
+
+function removeFinalizados(){
+  const fim = document.getElementsByClassName('completed');
+  for (let index = 0; index < fim.length; index += 1) {
+    fim[index].remove();     
+  }
+}
+removeAllFinal.addEventListener('click', removeFinalizados);
+
+function saveAllTask() {
+  const taskSave = newTask.innerHTML;
+  localStorage.setItem('save' , taskSave); 
+}
+saveTasks.addEventListener('click', saveAllTask);
+
+function saveLocal() {
+  const saveNew = localStorage.getItem('save');
+  if (saveNew !== null);
+  newTask.innerHTML = saveNew;
+}
+saveLocal();
+
+
+let removeSelected = document.querySelector('#remover-selecionado');
+removeSelected.addEventListener('click', function (event) {
+  for (let index = 0; index < list.length; index += 1) {
+    if(list[index].style.backgroundColor === 'rgb(128, 128, 128)'){
+      list[index].remove()
+    }
+
+  }
+})
+    </script>
+  
+  </body>
+  </html> 

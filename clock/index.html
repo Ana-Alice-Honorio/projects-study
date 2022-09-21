@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Qahiri&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+  <title>Clock em JS</title>
+</head>
+<body>
+
+    <style>
+body {
+  background-image: linear-gradient( #FFBBFF, #8B668B);
+  margin: 0;
+  padding: 0;
+}
+
+.clock {
+  border: 2px solid;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.display {
+  background-color: black;
+  width: 300px;
+  height: 200px;
+  text-align: center;
+  line-height: 200px;
+  color: white;
+  border-radius: 10px;
+  border: 2px solid #7CFC00;
+  font-size: 7rem;
+  font-family: 'Qahiri', sans-serif;
+}
+    </style>
+
+  <div class="clock">
+    <div class="display">00:00:00</div>
+  </div>
+  
+  <script>
+function updateTime () {
+  let display = document.querySelector('.display');
+  let now = new Date();
+  let hour = timeCorrection(now.getHours());
+  let min = timeCorrection(now.getMinutes());
+  let sec = timeCorrection(now.getSeconds());
+
+  const time = hour + ':' + min + ':' +  sec;
+  display.textContent = time;
+}
+
+function timeCorrection (number) {
+  if (number < 10) {
+    number = '0' + number;
+  }
+  return number;
+}
+
+updateTime();
+setInterval(updateTime, 1000);
+
+console.log(time);
+  </script>
+
+</body>
+</html>

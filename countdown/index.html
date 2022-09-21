@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CountDown</title>
+</head>
+<body>
+
+    <style>
+* { 
+  margin: 0px;
+  padding: 0px;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  height: 100vh;
+  background: #363636;
+  display: grid;
+  align-items: center;
+}
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(288px, 400px));
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.countdown li {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
+  padding: 1rem;
+  color: #1E90FF;
+  background-color: black;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.countdown li span {
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-size: 8rem;
+}
+    </style>
+
+  <ul class="countdown">
+    <li>
+      <span data-time></span>
+      <div>Day(s)</div>
+    </li>
+    <li>
+      <span data-time></span>
+      <div>Hour(s)</div>
+    </li>
+    <li>
+      <span data-time></span>
+      <div>Min.</div>
+    </li>
+    <li>
+      <span data-time></span>
+      <div>Sec.</div>
+    </li>
+  </ul>
+
+  <script type="module">
+    export default class Countdown {
+  constructor(futureDate) {
+    this.futureDate = futureDate;
+  }
+  get _actualDate() {
+    return new Date();
+  }
+  get _futureDate() {
+    return new Date(this.futureDate);
+  }
+  get _timeStampDiff() {
+    return this._futureDate.getTime() - this._actualDate.getTime();
+  }
+  get days() {
+    return Math.floor(this._timeStampDiff / (24 * 60 * 60 * 1000));
+  }
+  get hours() {
+    return Math.floor(this._timeStampDiff / (60 * 60 * 1000));
+  }
+  get minutes() {
+    return Math.floor(this._timeStampDiff / (60 * 1000));
+  }
+  get seconds() {
+    return Math.floor(this._timeStampDiff / (1000));
+  }
+  get total() {
+    const days = this.days < 10 ? "0" + this.days : this.days;
+    const hours = this.hours % 24 < 10 ? "0" + (this.hours % 24) : this.hours % 24;
+    const minutes = this.minutes % 60  < 10 ? "0" + (this.minutes % 60) : this.minutes % 60;
+    const seconds = this.seconds % 60  < 10 ? "0" + (this.seconds % 60) : this.seconds % 60;
+    return [days, hours, minutes, seconds];
+  }
+}
+
+const time = new Countdown("26 august 2023 05:42 GMT-0300");
+console.log(time.total);
+
+const timesNew = document.querySelectorAll('[data-time]');
+
+function showTime() {
+  timesNew.forEach((param1, param2) => {
+    param1.innerHTML = time.total[param2]
+ });
+}
+
+showTime();
+setInterval(showTime, 1000);
+  </script>
+
+</body>
+</html>
