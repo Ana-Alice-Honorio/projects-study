@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Art - Ana Alice</title>
+</head>
+
+<body>
+
+    <style>
+        #title {
+  font-family: Courier, monospace;
+  color: black;
+  margin: auto;
+}
+
+#clear-board {
+  border-radius: 10px;
+}
+
+#color-palette {
+  padding: 4px;
+  display: table-cell;
+}
+
+.color {
+  width: 40px;
+  height: 40px;
+  display: table-cell;
+  border: black solid 1px;
+}
+
+#black , #selected {
+  background-color: black;
+  border: 1px solid black;
+}
+
+.td {
+  padding: 5px;
+  width: 150px;
+  border: black solid 1px;
+  margin: 5px;
+}
+
+.pixel {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border: black solid 1px;
+}
+
+body {
+  background-color: aliceblue;
+}
+
+#board-size {
+  padding: 5px;
+  width: 100px;
+}
+    </style>
+
+  <h1 id="title">Paleta de Cores</h1>
+  <div id="color-palette">
+    <div class="color selected" id=black ></div> 
+    <div class="color"></div>
+    <div class="color"></div>
+    <div class="color"></div>
+  </div>
+  <button id="clear-board">Limpar</button>
+  <input  type="number" min="1" max="50" placeholder="Digite um número entre 5 e 50" id="board-size">
+  <button id="generate-board">VQV</button>
+    <table id="pixel-board">
+      <tr>
+        <td class="pixel"></td>
+        <td class="pixel"></td>
+        <td class="pixel"></td>
+        <td class="pixel"></td>
+        <td class="pixel"></td>
+      </tr>
+      <tr>
+        <td class="pixel"></td>
+        <td class="pixel"></td>
+        <td class="pixel"></td>
+        <td class="pixel"></td>
+        <td class="pixel"></td>
+      </tr>
+      <br>
+      <tr>
+        <td class="pixel"></td>
+        <td class="pixel"></td>
+        <td class="pixel"></td>
+        <td class="pixel"></td>
+        <td class="pixel"></td>
+      </tr>
+      <br>
+      <tr>
+        <td class="pixel"></td>
+        <td class="pixel"></td>
+        <td class="pixel"></td>
+        <td class="pixel"></td>
+        <td class="pixel"></td>
+      </tr>
+      <br>
+      <tr>
+        <td class="pixel"></td>
+        <td class="pixel"></td>
+        <td class="pixel"></td>
+        <td class="pixel"></td>
+        <td class="pixel"></td>
+      </tr>
+    </table>
+
+    <script>
+const rainbow = document.getElementById('color-palette');
+const judasPriest = document.getElementById('pixel-board');
+const metallica = document.getElementById('clear-board');
+const kingDiamond = document.querySelectorAll('.pixel');
+const boardSize = document.getElementById('board-size');
+const gerarButton = document.getElementById('generate-board');
+
+function colorPixel(event) {
+  const pixColor = document.getElementById('color-palette').childNodes;
+  for (let index = 1; index < pixColor.length; index++) {
+    pixColor[index].className = 'color';
+  }
+  event.target.className = 'color selected';
+}
+rainbow.addEventListener('click', colorPixel);
+
+function rainbowBoard(event) {
+  const colorSelected = document.getElementsByClassName('selected')[0];
+  const selectedColor = window.getComputedStyle(colorSelected).backgroundColor;
+  event.target.style.backgroundColor = selectedColor;
+}
+judasPriest.addEventListener('click', rainbowBoard);
+
+function backgroundWhite() {
+  for (let index = 0; index < kingDiamond.length; index++ ) {
+    kingDiamond[index].style.backgroundColor = 'white';
+  }
+}
+metallica.addEventListener('click', backgroundWhite);
+
+function createBoard(a) {
+  for (let i = 0; i < a; i += 1) {
+    const celineDion = document.createElement('div');
+    judasPriest.appendChild(celineDion);
+    celineDion.classList.add('pixel');
+
+    for (let b = 0; b < a; b += 1) {
+    const shaniaTwain = document.createElement('div');
+      shaniaTwain.classList.add('pixel');
+    celineDion.appendChild(shaniaTwain);
+    }
+  }
+}
+createBoard();
+
+function buttonNumberInput() {
+  if (boardSize.value === '') {
+    alert('Board inválido!');
+  }
+  if (boardSize.value < 5) {
+    boardSize.value = 5;
+  }
+  if (boardSize.value >= 50) {
+    boardSize.value = 50;
+  }
+  document.getElementById('pixel-board').innerHTML = '';
+  createBoard(boardSize.value);
+}
+gerarButton.addEventListener('click', buttonNumberInput);
+
+function generatorColor() {
+  const newColor = document.getElementsByClassName('color');
+  for (let index = 1; index < newColor.length; index += 1) {
+    const index1 = Math.floor(Math.random() * (255));
+    const index2 = Math.floor(Math.random() * (255));
+    const index3 = Math.floor(Math.random() * (255));
+    newColor[index].style.backgroundColor = `rgb(${index1}, ${index2},${index3})`; 
+  }
+}
+
+generatorColor();
+    </script>
+
+</body>
+</html>
