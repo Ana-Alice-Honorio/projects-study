@@ -1,0 +1,151 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+body {
+    background-color: aliceblue;
+    font-family: Arial;
+    padding: 20px;
+}
+
+#checkbox, .btn span { 
+    display: none;
+    color: aliceblue;
+}
+
+.btn {
+    display: block;
+    background-color: #742828;
+    color: aliceblue;
+    width: 55px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 20px;
+    cursor: pointer;
+    transition: width .3s ease-in-out;
+}
+
+.sidebar {
+    background-color: #0D1117;
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    z-index: 1111;
+    transition: transform .3s ease-in-out;
+    transform: translateX(-250px);
+}
+
+.sidebar ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.sidebar ul a {
+    position: relative;
+    text-decoration: none;
+    display: block;
+    background-color: transparent;
+    color: #BAB5BD;
+    padding: 15px 20px;
+    font-size: 16px;
+}
+
+.sidebar ul a li i {
+    margin-right: 15px;
+}
+
+.sidebar ul a:hover {
+    background-color: #161920;
+    color: #fff;
+}
+
+.sidebar ul a:hover::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    background-color: #D0FF88;
+    width: 4px;
+    height: 100%;
+}
+
+#checkbox:checked ~ .sidebar {
+    transform: translateX(0);
+}
+
+#checkbox:checked + .btn {
+    width: 250px;
+    padding: 0 20px;
+    color: black;
+}
+
+#checkbox:checked + .btn span { 
+    display: inline;
+}
+
+.welcome {
+    padding: 30px;
+    font-size: 40px;
+    text-align: center;
+    color: black;
+    background-color: #c7afa3;
+    /* text-align: center; */
+    /* position: fixed; */
+    /* width: 100%;
+    padding: 16px 0;
+    font-size: 20px;
+    background-color: #c7afa3 ;
+    color: black; */
+}
+
+.footer {
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #742828;
+    color: aliceblue;
+}
+
+  .leftcolumn {   
+    float: left;
+    width: 75%;
+  }
+
+  .rightcolumn {
+    float: left;
+    width: 25%;
+    padding-left: 20px;
+  }
+  
+  .fakeimg {
+    background-color: #aaa;
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .card {
+     background-color: white;
+     padding: 20px;
+     margin-top: 20px;
+  }
+  
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  @media screen and (max-width: 800px) {
+    .leftcolumn, .rightcolumn {   
+      width: 100%;
+      padding: 0;
+    }
+  }
