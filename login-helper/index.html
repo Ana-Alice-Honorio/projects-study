@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="./script.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'> -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <title>Login Helper</title>
+</head>
+<body>
+    
+    <header>Login Helper</header>
+
+    <main>
+        <form>
+
+           <section class="inputs-container">
+            <input type="email" placeholder="example@gmail.com">
+
+            <div class="password-container">
+                <input type="password" id="field-password" class="field-password" placeholder="*******">
+                <i class="fa fa-eye" id="eye" onclick="showPassword()"></i>
+                <i class="fa fa-eye-slash" id="eye-slash" onclick="showPassword()"></i>
+            </div>
+           </section>
+
+           <section class="password-infos">
+             <div>
+                <input type="checkbox">
+                <span>lembrar senha?</span>
+             </div>
+             <a href="">esqueceu a senha?</a>
+           </section>
+
+           <button id="btn-login">Login</button>
+
+           <section class="links-container">
+            <span>ou entre com:</span>
+
+            <div class="span">
+                <a href=""><i class="fa fa-google google"></i></a>
+                <a href=""><i class="fa fa-linkedin linkedin"></i></a>
+                <a href=""><i class="fa fa-facebook facebook"></i></a>
+            </div>
+           </section>
+
+           <footer>
+            <hr>
+            <span>Ainda não tem uma conta?<a href=""> Cadastre-se</a></span>
+           </footer>
+
+        </form>
+    </main>
+
+</body>
+</html>
