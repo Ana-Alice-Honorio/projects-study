@@ -1,0 +1,17 @@
+{
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "tsc-init": "^2.1.0"
+  },
+  "name": "typescript-study",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "author": "Alice Honorio",
+  "license": "ISC",
+  "description": ""
+}
