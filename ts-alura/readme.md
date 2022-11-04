@@ -12,3 +12,11 @@
 - Integração com scripts do Node.js
 - Modificadores de acesso private e public
 - Benefícios iniciais da linguagem TypeScript
+
+## Aula 3
+
+- O tipo implícito any
+- Benefícios da tipagem estática
+- Mais configurações do compilador tsc
+- Retorno de método explícito
+- Conversão de valores da interface do usuário

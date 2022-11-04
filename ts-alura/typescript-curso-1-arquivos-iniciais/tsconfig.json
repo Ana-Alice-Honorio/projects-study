@@ -4,8 +4,9 @@
         // pasta que vou ler
         "target": "ES6",
         // em qual versão do js vou compilar
-        "noEmitOnError": true
+        "noEmitOnError": true,
         //  não vai gerar arquivo js
+        "noImplicitAny": true
     },
     "include": [
         // quais docs serão compilados
