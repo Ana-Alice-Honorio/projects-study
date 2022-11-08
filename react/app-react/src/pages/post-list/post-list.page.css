@@ -1,0 +1,79 @@
+a:link {
+    text-decoration: none;
+    color: unset
+}
+
+.post-card{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.post-card__img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    overflow: hidden;
+    width: 20%;
+    height: 100px;
+    margin-right: 16px;
+}
+
+.post-card__img img {
+    width: 100%;
+}
+
+.post-card__text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.post-card__text h4{
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+  
+.post-card__text p{
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Page top  style*/
+.page-top{
+    border-bottom: 1px solid #f1f1f1;
+    padding: 16px 0px;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.page-top__title {
+    display: flex;
+    flex-direction: column;
+}
+
+.page-top__title h2{
+    color: #333;
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.page-top__title p{
+    color: #666;
+    font-size: 18px;
+    margin: 0;
+}
+
+.page-top__aside{
+    margin-left: auto;
+}
